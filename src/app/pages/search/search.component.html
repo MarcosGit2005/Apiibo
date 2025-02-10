@@ -1,0 +1,6 @@
+<input #nameInput type="text" name="" id="1" placeholder="Buscar Amiibo">
+<button (click)="searchAmiibo(nameInput.value)">Buscar Amiibo</button>
+
+<div class="amiiboContainer">
+  <app-amiibo *ngFor="let amiibo of amiibos;let i = index" class="card" [amiibo] = amiibo></app-amiibo>
+</div>

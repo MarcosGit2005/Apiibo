@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.home-container {
+  text-align: center;
+  padding: 20px;
+}
+
+video {
+  width: 80%;
+  border-radius: 10px;
+}
+
+.amiiboContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  min-height: 150px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  width: 200px;
+  border: 1px solid #ddd;
+}
+.card img {
+  max-height: 100px;
+  background-color: #ddd;
+  border-radius: 5%;
+}
+
+/*# sourceMappingURL=styles.css.map */
