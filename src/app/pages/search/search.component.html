@@ -1,6 +1,41 @@
-<input #nameInput type="text" name="" id="1" placeholder="Buscar Amiibo">
-<button (click)="searchAmiibo(nameInput.value)">Buscar Amiibo</button>
+<input #characterInput type="text" name="" placeholder="Buscar Amiibo">
+<button (click)="searchAmiibo(characterInput.value)">Buscar Amiibo</button>
+<button (click)="showFilters()">{{filtersButtonText}}</button>
+<div *ngIf="showFiltersInScreen">
+  <ul>
+    <li><input [(ngModel)]="nameInput" type="text" name="" placeholder="Nombre"></li>
+    <li>
+      <select [(ngModel)]="typeInput">
+        <option value="">Todos los tipos</option>
+        <option *ngFor="let types of typesOptions" value="{{types}}">{{types}}</option>
+      </select>
+    </li>
+    <li>
+      <select [(ngModel)]="gameSeriesInput">
+        <option value="">Todas las sagas</option>
+        <option *ngFor="let gameSeries of gameSeriesOptions" value="{{gameSeries}}">{{gameSeries}}</option>
+      </select>
+    </li>
+  </ul>
+</div>
 
 <div class="amiiboContainer">
-  <app-amiibo *ngFor="let amiibo of amiibos;let i = index" class="card" [amiibo] = amiibo></app-amiibo>
+  <app-amiibo *ngFor="let amiibo of amiibosInPage;let i = index" class="card" [amiibo] = amiibo (click)="goToDetails()"></app-amiibo>
+</div>
+<div *ngIf="showButtons" class="pageNavigator">
+  <button (click)="firstPage()" [disabled]="disableButtonsPrevious">Ir a la primera</button>
+  <button (click)="previousPage()" [disabled]="disableButtonsPrevious">Ir a la anterior</button>
+  <span></span>
+  <button (click)="nextPage()" [disabled]="disableButtonsNext">Ir a la siguiente</button>
+  <button (click)="lastPage()" [disabled]="disableButtonsNext">Ir a la última</button>
+  <select (change)="changeAmiibosPerPage($event)">
+    <option value="14">Amiibos por página</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+  </select>
 </div>

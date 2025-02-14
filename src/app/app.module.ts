@@ -8,6 +8,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { InfoComponent } from './pages/info/info.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AmiiboComponent } from './pages/search/amiibo/amiibo.component';
+import {FormsModule} from '@angular/forms';
+import { AmiiboDetailsComponent } from './pages/search/amiibo-details/amiibo-details.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { AmiiboComponent } from './pages/search/amiibo/amiibo.component';
     HomeComponent,
     SearchComponent,
     InfoComponent,
-    AmiiboComponent
+    AmiiboComponent,
+    AmiiboDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NavbarComponent
+    NavbarComponent,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -32,4 +32,42 @@ export class AmiiboApiServiceService {
     }
     return null;
   }
+  async getAmiibosTypes(){
+    try{
+      let amiibosTypes:Set<string> = new Set<string>()
+      let result = await fetch(this.apiLink+`amiibo/`);
+      let data = await result.json();
+      data.amiibo.forEach((a:any) => {
+        amiibosTypes.add(a.type);
+      });
+      return amiibosTypes;
+    } catch {
+      console.error("Error en la búsqueda de los tipos de amiibos");
+    }
+    return null;
+  }
+  async getAmiibosGameSeries(){
+    try{
+      let amiibosGameSeries:Set<string> = new Set<string>()
+      let result = await fetch(this.apiLink+`amiibo/`);
+      let data = await result.json();
+      data.amiibo.forEach((a:any) => {
+        amiibosGameSeries.add(a.gameSeries);
+      });
+      return amiibosGameSeries;
+    } catch {
+      console.error("Error en la búsqueda de las sagas de amiibos");
+    }
+    return null;
+  }
+  async getTotalAmiibos(){
+    try{
+      let result = await fetch(this.apiLink+`amiibo/`);
+      let data = await result.json();
+      return data.amiibo.length;
+    } catch {
+      console.error("Error en la búsqueda del total de amiibos");
+    }
+    return null;
+  }
 }
