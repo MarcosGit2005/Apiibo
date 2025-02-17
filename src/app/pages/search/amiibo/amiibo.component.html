@@ -1,5 +1,11 @@
-<img src="{{amiibo.image}}" alt="${p.name}">
-<p><strong>Nombre:</strong> {{amiibo.name}}</p>
-<p><strong>Personaje:</strong> {{amiibo.character}}</p>
-<p><strong>Saga:</strong> {{amiibo.gameSeries}}</p>
+<div class="amiibo-content" (click)="goToDetails(amiibo.head.toString(),amiibo.tail.toString())">
+  <img [src]="amiibo.image" [alt]="amiibo.name" class="amiibo-image">
+  <p class="amiibo-name">{{amiibo.name}}</p>
+  <p class="amiibo-character"><strong>Personaje:</strong> {{amiibo.character}}</p>
+  <p class="amiibo-series"><strong>Saga:</strong> {{amiibo.gameSeries}}</p>
+</div>
+<div class="favourite-buttons" *ngIf="isLoggedIn">
+  <button *ngIf="!isInFavourites" class="add-fav-btn" (click)="addToFavourites()">Añadir a favoritos</button>
+  <button *ngIf="isInFavourites" class="remove-fav-btn" (click)="removeFromFavourites()">Quitar de favoritos</button>
+</div>
 

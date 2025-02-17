@@ -1,6 +1,7 @@
 export class Amiibo {
-  constructor(id:number,name:string,amiiboSeries:string,character:string,gameSeries:string,image:string,release:string[],type:string) {
-    this._id = id;
+  constructor(head:string,tail:string,name:string,amiiboSeries:string,character:string,gameSeries:string,image:string,release:string[],type:string) {
+    this._head = head;
+    this._tail = tail;
     this._name = name;
     this._amiiboSeries = amiiboSeries;
     this._character = character;
@@ -10,7 +11,8 @@ export class Amiibo {
     this._type = type;
   }
 
-  private _id:number;
+  private _head:string;
+  private _tail:string;
   private _name: string;
   private _amiiboSeries:string;
   private _character:string;
@@ -19,11 +21,17 @@ export class Amiibo {
   private _release:string[];
   private _type:string;
 
-  get id(): number {
-    return this._id;
+  get head(): string {
+    return this._head;
   }
-  set id(value: number) {
-    this._id = value;
+  set head(value: string) {
+    this._head = value;
+  }
+  get tail(): string {
+    return this._tail;
+  }
+  set tail(value: string) {
+    this._tail = value;
   }
   get name(): string {
     return this._name;

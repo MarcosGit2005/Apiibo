@@ -1,0 +1,12 @@
+<div class="overlay-login">
+  <div class="popup">
+    <h2>Iniciar Sesión</h2>
+    <form (submit)="login()">
+      <input type="text" placeholder="Usuario" [(ngModel)]="username" name="username" required />
+      <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required />
+      <button type="submit">Ingresar</button>
+      <button type="button" (click)="cerrar()">Cancelar</button>
+    </form>
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+</div>

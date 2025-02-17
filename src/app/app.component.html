@@ -1,2 +1,12 @@
-<app-navbar></app-navbar>
+<nav class="navbar">
+  <a routerLink="/" class="nav-link">Inicio</a>
+  <a routerLink="/search" class="nav-link">Búsqueda</a>
+  <a routerLink="/info" class="nav-link">Información</a>
+  <button class="theme-toggle" (click)="toggleTheme()">🌙/☀️</button>
+  <button *ngIf="!isLoggedIn" class="login-btn" (click)="abrirLogin()">Iniciar Sesión</button>
+  <button *ngIf="isLoggedIn" class="profile-btn" (click)="verPerfil()">Perfil</button>
+</nav>
+
+<app-login *ngIf="mostrarLogin" (closePopup)="cerrarLogin()" (loginSuccess)="usuarioLogueado()"></app-login>
+
 <router-outlet/>

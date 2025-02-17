@@ -1,1 +1,27 @@
-<p>amiibo-details works!</p>
+<button routerLink="/search">Volver atrás</button>
+<div class="contenedorDetalles">
+  <img
+    [src]="amiibo.image"
+    [alt]="'Imagen pequeña de '+amiibo.name"
+    (mouseenter)="mostrarPopup($event)"
+  />
+  <p><strong>Nombre:</strong> {{amiibo.name}}</p>
+  <p><strong>Personaje:</strong> {{amiibo.character}}</p>
+  <p><strong>Saga:</strong> {{amiibo.gameSeries}}</p>
+  <p><strong>Serie amiibo:</strong> {{amiibo.amiiboSeries}}</p>
+  <p><strong>Tipo:</strong> {{amiibo.type}}</p>
+  <div>
+    <span>Fechas de salida: </span>
+    <ul>
+      <li *ngFor="let value of amiibo.release | keyvalue;let i = index">{{value.key}} : {{value.value}}</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Ventana emergente para cuando paso el ratón por encima de la imagen del amiibo de arriba -->
+<div class="popup-imagen-contenedor" *ngIf="mostrarImagen">
+  <div class="popup-imagen-contenido" [ngStyle]="{ top: posicionY + 'px', left: posicionX + 'px' }" (mouseleave)="ocultarPopup()">
+    <img [src]="amiibo.image" [alt]="'Imagen ampliada de '+amiibo.name" />
+    <p>{{amiibo.image}}</p>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Amiibo} from './model/Amiibo';
+import {Amiibo} from '../model/Amiibo';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class AmiiboApiServiceService {
       const amiibosResponse:Amiibo[]= [];
       data.amiibo.forEach((a:any) => {
         amiibosResponse.push(new Amiibo(
-          <number>(a.head+a.tail),
+          a.head,
+          a.tail,
           a.name,
           a.amiiboSeries,
           a.character,
@@ -29,6 +30,28 @@ export class AmiiboApiServiceService {
       return amiibosResponse;
     } catch {
       console.error("Error en la búsqueda de amiibos por nombre del personaje");
+    }
+    return null;
+  }
+  async getAmiiboById(id:string){
+    let head:string = id.substring(0,id.length/2);
+    let tail:string = id.substring(id.length/2);
+    try{
+      let result = await fetch(this.apiLink+`amiibo/?head=${head}&tail=${tail}`);
+      let data = await result.json();
+      return new Amiibo(
+        data['amiibo'][0].head,
+        data['amiibo'][0].tail,
+        data['amiibo'][0].name,
+        data['amiibo'][0].amiiboSeries,
+        data['amiibo'][0].character,
+        data['amiibo'][0].gameSeries,
+        data['amiibo'][0].image,
+        data['amiibo'][0].release,
+        data['amiibo'][0].type,
+      );
+    } catch {
+      console.error("Error en la búsqueda de amiibos por id");
     }
     return null;
   }
