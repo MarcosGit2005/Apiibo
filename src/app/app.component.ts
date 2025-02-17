@@ -15,14 +15,20 @@ export class AppComponent {
   darkMode = false;
   mostrarLogin = false;
   isLoggedIn = false;
+  username:string = "";
 
   constructor(private router:Router, private authService: AuthServiceService, private userService:UserServiceService) {}
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isLoggedIn();
+    let darkTheme = localStorage.getItem("theme")=="true";
+    if (darkTheme){
+      this.toggleTheme();
+    }
 
-    if (this.isLoggedIn){
+    if (this.isLoggedIn) {
       this.userService.setUser(this.authService.getUser().username);
+      this.username = this.userService.getUser();
     }
   }
 
@@ -45,6 +51,7 @@ export class AppComponent {
 
   toggleTheme() {
     this.darkMode = !this.darkMode;
+    localStorage.setItem('theme', JSON.stringify(this.darkMode));
     document.body.classList.toggle('dark-mode', this.darkMode);
   }
 }

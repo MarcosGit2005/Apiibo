@@ -24,6 +24,9 @@ export class SearchComponent {
     service.getAmiibosGameSeries().then((response) => {
       response?.forEach(gameSeries => {this.gameSeriesOptions.add(gameSeries)})
     });
+    service.getAmiibosSeries().then((response) => {
+      response?.forEach(amiiboSeries => {this.amiiboSeriesOptions.add(amiiboSeries)})
+    });
   }
 
   ngOnInit() {
@@ -38,6 +41,8 @@ export class SearchComponent {
       this.amiibosPerPage = savedAmiibosPerPage;
       this.showButtons = true;
       this.updateAmiibosInPage();
+    } else {
+      this.searchAmiibo("");
     }
   }
 
@@ -58,8 +63,10 @@ export class SearchComponent {
   nameInput:string = "";
   typeInput:string = "";
   gameSeriesInput:string = "";
+  amiiboSeriesInput:string = "";
   typesOptions:Set<string> = new Set();
   gameSeriesOptions:Set<string> = new Set();
+  amiiboSeriesOptions:Set<string> = new Set();
 
   showFilters(){
     this.showFiltersInScreen = !this.showFiltersInScreen;
@@ -93,16 +100,17 @@ export class SearchComponent {
     this.pageNumber = 0;
     let filters:string = this.showFiltersInScreen?(this.nameInput==""?"":`&name=${this.nameInput}`)
       +(this.typeInput==""?"":`&type=${this.typeInput}`)
-      +(this.gameSeriesInput==""?"":`&gameseries=${this.gameSeriesInput}`):"";
+      +(this.gameSeriesInput==""?"":`&gameseries=${this.gameSeriesInput}`)
+      +(this.amiiboSeriesInput==""?"":`&amiiboSeries=${this.amiiboSeriesInput}`):"";
 
     this.service.getAllAmiiboByName(character+filters).then((response) => {
       this.amiibos = response?.sort((a:Amiibo,b:Amiibo) => a.name.localeCompare(b.name))!;
-      this.totalAmiibos = this.amiibos.length;
       this.updateAmiibosInPage()
     });
     this.updateButtons();
   }
   updateAmiibosInPage(){
+    this.totalAmiibos = this.amiibos!.length;
     this.amiibosInPage = this.amiibos?.slice(this.amiibosPerPage*this.pageNumber,(this.amiibosPerPage*this.pageNumber)+this.amiibosPerPage)!;
     this.searchService.setResults(this.amiibos!);
     this.searchService.setPage(this.pageNumber);

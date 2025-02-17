@@ -1,19 +1,22 @@
-<button routerLink="/search">Volver atrás</button>
 <div class="contenedorDetalles">
-  <img
-    [src]="amiibo.image"
-    [alt]="'Imagen pequeña de '+amiibo.name"
-    (mouseenter)="mostrarPopup($event)"
-  />
-  <p><strong>Nombre:</strong> {{amiibo.name}}</p>
-  <p><strong>Personaje:</strong> {{amiibo.character}}</p>
-  <p><strong>Saga:</strong> {{amiibo.gameSeries}}</p>
-  <p><strong>Serie amiibo:</strong> {{amiibo.amiiboSeries}}</p>
-  <p><strong>Tipo:</strong> {{amiibo.type}}</p>
-  <div>
-    <span>Fechas de salida: </span>
+  <div class="amiibo-img">
+    <img
+      [src]="amiibo.image"
+      [alt]="'Imagen pequeña de '+amiibo.name"
+      (mouseenter)="mostrarPopup($event)"
+    />
+  </div>
+  <p class="detalle"><strong>Nombre:</strong> {{amiibo.name}}</p>
+  <p class="detalle"><strong>Personaje:</strong> {{amiibo.character}}</p>
+  <p class="detalle"><strong>Saga:</strong> {{amiibo.gameSeries}}</p>
+  <p class="detalle"><strong>Serie amiibo:</strong> {{amiibo.amiiboSeries}}</p>
+  <p class="detalle"><strong>Tipo:</strong> {{amiibo.type}}</p>
+  <div class="fechas">
+    <span>Fechas de salida:</span>
     <ul>
-      <li *ngFor="let value of amiibo.release | keyvalue;let i = index">{{value.key}} : {{value.value}}</li>
+      <li *ngFor="let value of amiibo.release | keyvalue; let i = index">
+        {{value.key}}: {{value.value}}
+      </li>
     </ul>
   </div>
 </div>

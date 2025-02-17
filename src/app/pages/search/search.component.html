@@ -1,24 +1,45 @@
 <div class="search-container">
-  <input #characterInput type="text" placeholder="Buscar Amiibo" class="search-input">
-  <button class="search-btn" (click)="searchAmiibo(characterInput.value)">Buscar</button>
-  <button class="filter-btn" (click)="showFilters()">{{filtersButtonText}}</button>
-
-  <div *ngIf="showFiltersInScreen" class="filters">
-    <ul>
-      <li><input [(ngModel)]="nameInput" type="text" placeholder="Nombre"></li>
-      <li>
-        <select [(ngModel)]="typeInput">
-          <option value="">Todos los tipos</option>
-          <option *ngFor="let type of typesOptions" [value]="type">{{type}}</option>
-        </select>
-      </li>
-      <li>
-        <select [(ngModel)]="gameSeriesInput">
-          <option value="">Todas las sagas</option>
-          <option *ngFor="let gameSeries of gameSeriesOptions" [value]="gameSeries">{{gameSeries}}</option>
-        </select>
-      </li>
-    </ul>
+  <div>
+    <input #characterInput type="text" placeholder="Buscar Amiibo" class="search-input">
+    <button class="search-btn" (click)="searchAmiibo(characterInput.value)">Buscar</button>
+  </div>
+  <div>
+    <button class="filter-btn" (click)="showFilters()">{{filtersButtonText}}</button>
+    <div *ngIf="showFiltersInScreen" class="filters">
+      <ul>
+        <li><input [(ngModel)]="nameInput" type="text" placeholder="Nombre"></li>
+        <li>
+          <select [(ngModel)]="typeInput">
+            <option value="">Todos los tipos</option>
+            <option *ngFor="let type of typesOptions" [value]="type">{{type}}</option>
+          </select>
+        </li>
+        <li>
+          <select [(ngModel)]="gameSeriesInput">
+            <option value="">Todas las sagas</option>
+            <option *ngFor="let gameSeries of gameSeriesOptions" [value]="gameSeries">{{gameSeries}}</option>
+          </select>
+        </li>
+        <li>
+          <select [(ngModel)]="amiiboSeriesInput">
+            <option value="">Todas las series</option>
+            <option *ngFor="let amiiboSeries of amiiboSeriesOptions" [value]="amiiboSeries">{{amiiboSeries}}</option>
+          </select>
+        </li>
+        <li>
+          <span>Amiibos/página: </span>
+          <select (change)="changeAmiibosPerPage($event)">
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10" selected>10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -27,18 +48,12 @@
 </div>
 
 <div *ngIf="showButtons" class="pageNavigator">
-  <button (click)="firstPage()" [disabled]="disableButtonsPrevious">Ir a la primera</button>
-  <button (click)="previousPage()" [disabled]="disableButtonsPrevious">Ir a la anterior</button>
-  <span>{{pageNumber+1}} de {{Math.ceil(this.totalAmiibos/this.amiibosPerPage-1)+1}}</span> <!-- Aquí voy a indicar el número de la página actual y el total de ellas -->
-  <button (click)="nextPage()" [disabled]="disableButtonsNext">Ir a la siguiente</button>
-  <button (click)="lastPage()" [disabled]="disableButtonsNext">Ir a la última</button>
-  <select (change)="changeAmiibosPerPage($event)">
-    <option value="10">Amiibos por página</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-  </select>
+  <div class="leftButtons">
+    <button (click)="firstPage()" [disabled]="disableButtonsPrevious"><<</button>
+    <button (click)="previousPage()" [disabled]="disableButtonsPrevious"><</button>
+  </div>
+  <div class="rightButtons">
+    <button (click)="nextPage()" [disabled]="disableButtonsNext">></button>
+    <button (click)="lastPage()" [disabled]="disableButtonsNext">>></button>
+  </div>
 </div>

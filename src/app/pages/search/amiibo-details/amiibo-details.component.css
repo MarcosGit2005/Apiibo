@@ -1,0 +1,62 @@
+.contenedorDetalles .fechas span {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.contenedorDetalles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 15px;
+  border-radius: 20px;
+  max-width: 80vw;
+  margin: 50px auto;
+  text-align: left;
+  color: white;
+}
+.contenedorDetalles .amiibo-img {
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenedorDetalles .amiibo-img img {
+  width: 200px;
+  height: auto;
+}
+.contenedorDetalles .detalle {
+  display: flex;
+  align-items: center;
+  background-color: #e60012;
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+}
+.contenedorDetalles .detalle strong {
+  margin-right: 5px;
+}
+.contenedorDetalles .fechas {
+  grid-column: 1/-1;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.contenedorDetalles .fechas span {
+  text-decoration: underline;
+}
+.contenedorDetalles .fechas ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+.contenedorDetalles .fechas ul li {
+  padding: 5px;
+  border-bottom: 1px solid rgb(255, 77, 90.9304347826);
+}
+
+/*# sourceMappingURL=amiibo-details.component.css.map */

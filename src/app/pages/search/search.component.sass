@@ -1,4 +1,6 @@
-$primary-color: #e60012 // Rojo Nintendo
+@use 'sass:color'
+
+$primary-color: #e60012
 $secondary-color: white
 $hover-bg: #ff4d4d
 $button-hover: #c4000d
@@ -11,11 +13,20 @@ $transition-speed: 0.3s
   align-items: center
   gap: 10px
   padding: 20px
-  height: 50px
+  height: 80px
+
+  @for $i from 1 through 2
+    & > div:nth-child(#{$i})
+      @if $i==1
+        width: 70%
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: 10px
 
   .search-input
-    width: 60%
     padding: 10px
+    width: 80%
     border: 2px solid $primary-color
     border-radius: $border-radius
     font-size: 1rem
@@ -32,3 +43,50 @@ $transition-speed: 0.3s
     transition: background $transition-speed
     &:hover
       background: $button-hover
+  .filters
+    input, select
+      border: 1px solid red
+      margin-top: 2px
+      margin-bottom: 2px
+      border-radius: calc($border-radius/2)
+
+.pageNavigator
+  position: absolute
+  top: 50%
+  width: 100%
+  transform: translateY(-50%)
+  display: flex
+  justify-content: space-between
+  pointer-events: none
+  button
+    pointer-events: auto
+    background-color: $primary-color
+    color: white
+    font-size: 1.5rem
+    font-weight: bold
+    width: 50px
+    height: 50px
+    border: none
+    border-radius: 50%
+    cursor: pointer
+    transition: all 0.3s ease-in-out
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3)
+    &:hover
+      background-color: color.adjust($primary-color, $lightness: -10%)
+      transform: scale(1.1)
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4)
+    &:disabled
+      background-color: grey
+      cursor: not-allowed
+      transform: scale(1)
+      box-shadow: none
+  .leftButtons
+    position: absolute
+    left: 20px
+    display: flex
+    gap: 10px
+  .rightButtons
+    position: absolute
+    right: 20px
+    display: flex
+    gap: 10px

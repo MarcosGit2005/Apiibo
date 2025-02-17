@@ -58,10 +58,10 @@ export class AmiiboApiServiceService {
   async getAmiibosTypes(){
     try{
       let amiibosTypes:Set<string> = new Set<string>()
-      let result = await fetch(this.apiLink+`amiibo/`);
+      let result = await fetch(this.apiLink+`type/`);
       let data = await result.json();
-      data.amiibo.forEach((a:any) => {
-        amiibosTypes.add(a.type);
+      data.amiibo.forEach((type:any) => {
+        amiibosTypes.add(type.name);
       });
       return amiibosTypes;
     } catch {
@@ -72,10 +72,24 @@ export class AmiiboApiServiceService {
   async getAmiibosGameSeries(){
     try{
       let amiibosGameSeries:Set<string> = new Set<string>()
-      let result = await fetch(this.apiLink+`amiibo/`);
+      let result = await fetch(this.apiLink+`gameseries/`);
       let data = await result.json();
-      data.amiibo.forEach((a:any) => {
-        amiibosGameSeries.add(a.gameSeries);
+      data.amiibo.forEach((gameseries:any) => {
+        amiibosGameSeries.add(gameseries.name);
+      });
+      return amiibosGameSeries;
+    } catch {
+      console.error("Error en la búsqueda de las sagas de amiibos");
+    }
+    return null;
+  }
+  async getAmiibosSeries(){
+    try{
+      let amiibosGameSeries:Set<string> = new Set<string>()
+      let result = await fetch(this.apiLink+`amiiboseries/`);
+      let data = await result.json();
+      data.amiibo.forEach((amiiboseries:any) => {
+        amiibosGameSeries.add(amiiboseries.name);
       });
       return amiibosGameSeries;
     } catch {

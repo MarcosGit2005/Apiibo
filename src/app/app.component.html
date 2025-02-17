@@ -1,10 +1,10 @@
 <nav class="navbar">
-  <a routerLink="/" class="nav-link">Inicio</a>
-  <a routerLink="/search" class="nav-link">Búsqueda</a>
-  <a routerLink="/info" class="nav-link">Información</a>
+  <a routerLink="/" class="nav-link">Inicio <span class="material-icons">home</span></a>
+  <a routerLink="/search" class="nav-link">Búsqueda <span class="material-icons">search</span></a>
+  <a routerLink="/info" class="nav-link">Información <span class="material-icons">info</span></a>
   <button class="theme-toggle" (click)="toggleTheme()">🌙/☀️</button>
   <button *ngIf="!isLoggedIn" class="login-btn" (click)="abrirLogin()">Iniciar Sesión</button>
-  <button *ngIf="isLoggedIn" class="profile-btn" (click)="verPerfil()">Perfil</button>
+  <button *ngIf="isLoggedIn" class="profile-btn" (click)="verPerfil()">{{username}}</button>
 </nav>
 
 <app-login *ngIf="mostrarLogin" (closePopup)="cerrarLogin()" (loginSuccess)="usuarioLogueado()"></app-login>
