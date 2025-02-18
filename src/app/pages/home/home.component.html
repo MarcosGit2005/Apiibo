@@ -1,9 +1,16 @@
-<div class="home-container">
-  <h1>Bienvenido a APIIBO</h1>
-  <p>Explora contenido acerca de las figuras coleccionables de Nintendo</p>
-  <img src="" alt="Banner">
-  <video controls>
-    <source src="" type="video/mp4">
-    Tu navegador no soporta el video.
-  </video>
+<div class="intro">
+  <img src="assets/amiibo_logo.png">
+  <div class="intro-content">
+    <h1>Bienvenido a <span>Apiibo</span></h1>
+    <p>Explora la colección completa de Amiibos y descubre sus detalles.</p>
+    <div class="media">
+      <div class="image-gallery">
+        <img *ngFor="let amiibo of amiibosInicio" [src]="amiibo.image"/>
+      </div>
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/odUjMhc6YgU?si=kexDrQp_XHTgt2XB" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 </div>
+

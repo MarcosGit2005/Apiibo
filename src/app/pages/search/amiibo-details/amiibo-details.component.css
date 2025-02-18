@@ -6,6 +6,10 @@
 
 .contenedorDetalles {
   display: grid;
+  font-family: "Raleway", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   gap: 15px;
@@ -28,10 +32,27 @@
 .contenedorDetalles .detalle {
   display: flex;
   align-items: center;
-  background-color: #e60012;
   padding: 10px;
   border-radius: 10px;
   width: 80%;
+}
+.contenedorDetalles .detalle:nth-child(1) {
+  background-color: rgb(179, 0, 14.0086956522);
+}
+.contenedorDetalles .detalle:nth-child(2) {
+  background-color: #e60012;
+}
+.contenedorDetalles .detalle:nth-child(3) {
+  background-color: rgb(179, 0, 14.0086956522);
+}
+.contenedorDetalles .detalle:nth-child(4) {
+  background-color: #e60012;
+}
+.contenedorDetalles .detalle:nth-child(5) {
+  background-color: rgb(179, 0, 14.0086956522);
+}
+.contenedorDetalles .detalle:nth-child(6) {
+  background-color: #e60012;
 }
 .contenedorDetalles .detalle strong {
   margin-right: 5px;
@@ -57,6 +78,58 @@
 .contenedorDetalles .fechas ul li {
   padding: 5px;
   border-bottom: 1px solid rgb(255, 77, 90.9304347826);
+}
+
+.popup-imagen-contenedor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenido de la ventana emergente */
+.popup-imagen-contenido {
+  background: white;
+  padding: 10px;
+  width: 800px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Imagen ampliada */
+.popup-imagen-contenido img {
+  width: 600px;
+  height: auto;
+  max-height: 90vh;
+  border-radius: 5px;
+}
+
+/* Texto con la URL de la imagen */
+.popup-imagen-contenido p {
+  margin-top: 10px;
+  color: black;
+  font-size: 14px;
+}
+
+.popup-imagen-contenido {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /*# sourceMappingURL=amiibo-details.component.css.map */

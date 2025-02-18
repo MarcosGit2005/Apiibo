@@ -97,14 +97,5 @@ export class AmiiboApiServiceService {
     }
     return null;
   }
-  async getTotalAmiibos(){
-    try{
-      let result = await fetch(this.apiLink+`amiibo/`);
-      let data = await result.json();
-      return data.amiibo.length;
-    } catch {
-      console.error("Error en la búsqueda del total de amiibos");
-    }
-    return null;
-  }
+
 }

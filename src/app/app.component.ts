@@ -42,6 +42,7 @@ export class AppComponent {
 
   usuarioLogueado() {
     this.isLoggedIn = true;
+    this.username = this.userService.getUser();
     this.cerrarLogin();
   }
 

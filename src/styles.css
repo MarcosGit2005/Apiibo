@@ -6,6 +6,9 @@ body {
   background-color: #121212;
   color: white;
 }
+.dark-mode .intro > img{
+  filter: invert(100%);
+}
 
 .home-container {
   text-align: center;
@@ -29,6 +32,10 @@ video {
 }
 
 .amiibo-card {
+  font-family: "Raleway", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -80,90 +87,32 @@ video {
   background: #c4000d;
 }
 
-/* Estilo para la ventana emergente */
-.popup-imagen-contenedor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+.profileContent {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  font-family: "Raleway", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 10px;
 }
-
-/* Contenido de la ventana emergente */
-.popup-imagen-contenido {
-  background: white;
-  padding: 10px;
-  width: 800px;
-  border-radius: 10px;
-  text-align: center;
+.profileContent button {
+  background: #e60012;
+  color: white;
+  border: 2px solid transparent;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, transform 0.1s ease-in-out;
 }
-
-/* Imagen ampliada */
-.popup-imagen-contenido img {
-  width: 600px;
-  height: auto;
-  max-height: 90vh;
-  border-radius: 5px;
-}
-
-/* Texto con la URL de la imagen */
-.popup-imagen-contenido p {
-  margin-top: 10px;
-  color: black;
-  font-size: 14px;
-}
-
-.popup-imagen-contenido {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.overlay-login {
-  z-index: 2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.overlay-login .popup {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-.overlay-login input {
-  display: block;
-  margin: 10px auto;
-  padding: 8px;
-  width: 80%;
-}
-.overlay-login button {
-  margin: 5px;
-  padding: 10px;
-}
-.overlay-login .error {
-  color: red;
-  font-size: 14px;
+.profileContent button:hover {
+  background: #c4000d;
+  color: white;
+  transform: scale(1.05);
 }
 
 /*# sourceMappingURL=styles.css.map */

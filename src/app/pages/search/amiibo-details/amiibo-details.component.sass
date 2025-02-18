@@ -20,6 +20,10 @@ $border-radius: 20px
   font-weight: bold
 .contenedorDetalles
   display: grid
+  font-family: "Raleway", serif
+  font-optical-sizing: auto
+  font-weight: 400
+  font-style: normal
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto
   gap: 15px
@@ -38,7 +42,14 @@ $border-radius: 20px
   .detalle
     display: flex
     align-items: center
-    background-color: $primary-color
+
+    @for $i from 1 through 6
+      &:nth-child(#{$i})
+        @if $i%2==0
+          background-color: $primary-color
+        @else
+          background-color: color.adjust($primary-color, $lightness: -10%)
+
     padding: 10px
     border-radius: 10px
     width: 80%
@@ -61,3 +72,40 @@ $border-radius: 20px
       li
         padding: 5px
         border-bottom: 1px solid color.adjust($primary-color, $lightness: 20%)
+
+.popup-imagen-contenedor
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.7)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 1000
+.popup-imagen-contenido
+  background: white
+  padding: 10px
+  width: 800px
+  border-radius: 10px
+  text-align: center
+.popup-imagen-contenido img
+  width: 600px
+  height: auto
+  max-height: 90vh
+  border-radius: 5px
+.popup-imagen-contenido p
+  margin-top: 10px
+  color: black
+  font-size: 14px
+
+.popup-imagen-contenido
+  animation: fadeIn 0.3s ease-in-out
+@keyframes fadeIn
+  from
+    opacity: 0
+    transform: scale(0.8)
+  to
+    opacity: 1
+    transform: scale(1)

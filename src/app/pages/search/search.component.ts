@@ -124,4 +124,5 @@ export class SearchComponent {
 
   protected readonly Number = Number;
   protected readonly Math = Math;
+  protected readonly KeyboardEvent = KeyboardEvent;
 }

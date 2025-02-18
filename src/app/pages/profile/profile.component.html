@@ -1,5 +1,7 @@
-<h1>Perfil de {{username}}</h1>
-<button (click)="signOut()">Cerrar sesión</button>
+<div class="profileContent">
+  <h1>Perfil de {{username}}</h1>
+  <button (click)="signOut()">Cerrar sesión</button>
+</div>
 <div class="amiibo-container">
   <app-amiibo *ngFor="let amiibo of amiibosFavoritos" class="amiibo-card" [amiibo]="amiibo" [amiibosFavoritos]="favoutitesIds"></app-amiibo>
 </div>
