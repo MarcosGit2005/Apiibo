@@ -7,9 +7,11 @@ body {
   color: white;
 }
 .dark-mode .intro > img{
+  filter: invert(0%);
+}
+.intro > img{
   filter: invert(100%);
 }
-
 .home-container {
   text-align: center;
   padding: 20px;
