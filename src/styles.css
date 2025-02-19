@@ -6,12 +6,13 @@ body {
   background-color: #121212;
   color: white;
 }
-.dark-mode .intro > img{
-  filter: invert(0%);
-}
 .intro > img{
   filter: invert(100%);
 }
+.dark-mode .intro > img{
+  filter: invert(0%);
+}
+
 .home-container {
   text-align: center;
   padding: 20px;

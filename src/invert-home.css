@@ -1,0 +1,8 @@
+.intro > img{
+  filter: invert(100%);
+}
+.dark-mode .intro > img{
+  filter: invert(0%);
+}
+
+/* NO ME LO PILLA EN EL INDEX.html, si llegas a recompilar el sass aquí están los dos estilos para invertir el color del logo en la página inicial */
